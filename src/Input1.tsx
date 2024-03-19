@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react"
+import { observer } from "mobx-react";
+import { useEffect } from "react"
+import { store1 } from "./store";
 
-export default function Input1(){
-    const [ input1Text, setInput1Text ] = useState('')
+export const Input1 = observer(() => {
+
     useEffect(()=>{console.log('render Input1');})
+    
     return (
         <div style = {{borderStyle : "solid" }}>
-            <h1>Input1: {input1Text}</h1>
-            <input value={input1Text} onChange={(e)=>setInput1Text(e.target.value)} />
+            <h1>Input1: {store1.text1}</h1>
+            <input value={store1.text1} onChange={(e)=> store1.setText1(e.target.value)} />
         </div>)  
-  }
+
+  })
+
